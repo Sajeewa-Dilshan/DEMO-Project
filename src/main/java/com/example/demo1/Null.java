@@ -3,6 +3,7 @@ package com.example.demo1;
 import com.example.demo1.model.nullpointerexceptionmodels.Attribute;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -45,6 +46,10 @@ public class Null {
 
         System.out.println(ldt1.until(ldt2, ChronoUnit.DAYS));
         System.out.println(ldt2.isAfter(ldt1));
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse("2022-11-17 15:16:09", dateTimeFormatter);
+        System.out.println("fff"+dateTime);
     }
 
 
