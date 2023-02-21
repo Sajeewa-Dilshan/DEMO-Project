@@ -4,6 +4,7 @@ import com.example.demo1.model.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,7 +14,7 @@ public class FlatMap {
         List<String> fav= new ArrayList<>();
         fav.add("apple");
         fav.add("cake");
-        
+
         Customer customer1=new Customer("001","0711234567",fav);
         Customer customer2=new Customer("002","0711234568",fav);
         Customer customer3=new Customer("003","0711234569",fav);
@@ -29,5 +30,21 @@ public class FlatMap {
         List<String> collect1 = collect.stream().flatMap(customer -> customer.getFavorites().stream()).collect(Collectors.toList());
         System.out.println(collect1);
 
+        Optional<String> s = Optional.of("input");
+        System.out.println(s.map(FlatMap::getOutput));
+        System.out.println(s.flatMap(FlatMap::getOutputOpt));
+
     }
+
+
+    static String getOutput(String input) {
+        return input == null ? null : "output for " + input;
+    }
+
+    static Optional<String> getOutputOpt(String input) {
+        return input == null ? Optional.empty() : Optional.of("output for " + input);
+    }
+
+
+
 }
